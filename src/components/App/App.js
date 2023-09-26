@@ -11,11 +11,10 @@ function App()  {
   const [ideas, setIdeas] = useState(dummyIdeas);
 
   return (
-    <main>
+    <main className='App'>
     <h1>IdeaBox</h1>
-    <p>Hello World</p>
-    <Ideas/>
-    </main>
+    <Ideas ideas={ideas} />
+  </main>
   )
 }
 
