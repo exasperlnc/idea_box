@@ -1,4 +1,5 @@
 import { useState } from 'react'; 
+import Ideas from '../Ideas/Ideas';
 import './App.css';
 
 function App()  {
@@ -13,6 +14,7 @@ function App()  {
     <main>
     <h1>IdeaBox</h1>
     <p>Hello World</p>
+    <Ideas/>
     </main>
   )
 }
