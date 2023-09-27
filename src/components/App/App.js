@@ -1,4 +1,4 @@
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react'; 
 import Ideas from '../Ideas/Ideas';
 import Form from '../Form/Form'
 import './App.css';
@@ -23,9 +23,13 @@ function App(){
   function getIdeas() {
     fetch('http://localhost:3001/api/v1/ideas')
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => setIdeas([...ideas, ...data]))
     .catch(error => console.log(error.message))
   }
+
+  useEffect(() => {
+    getIdeas();
+  }, [])
 
   return(
     <main className='App'>
