@@ -1,8 +1,8 @@
 // Ideas.js
-import Card from '../Card/Card';
 import './Ideas.css';
+import Card from '../Card/Card';
 
-function Ideas({ ideas }){
+function Ideas({ ideas, deleteIdea }){
 
   const ideaCards = ideas.map(idea => {
     return (
@@ -11,6 +11,7 @@ function Ideas({ ideas }){
         description={idea.description}
         id={idea.id}
         key={idea.id}
+        deleteIdea={deleteIdea}
       />
     )
   })
