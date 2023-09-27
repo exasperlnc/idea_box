@@ -20,6 +20,13 @@ function App(){
     setIdeas(filteredIdeas)
   }
 
+  function getIdeas() {
+    fetch('http://localhost:3001/api/v1/ideas')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error.message))
+  }
+
   return(
     <main className='App'>
         <h1>IdeaBox</h1>
