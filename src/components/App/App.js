@@ -10,14 +10,27 @@ function App(){
         { id: 3, title: 'Learn a martial art', description: 'To exact vengeance upon my enemies' },
     ]
   const [ideas, setIdeas] = useState(dummyIdeas)
-  
-  function addIdea (newIdea) {
-    setIdeas([...ideas, newIdea])
-  }
+ 
   function deleteIdea(id){
-    console.log(id);
-    const filteredIdeas = ideas.filter(idea => idea.id !== id)
-    setIdeas(filteredIdeas)
+    fetch('http://localhost:3001/api/v1/ideas/${id}')
+    .then(response => {
+      const filteredIdea = ideas.filter(idea => idea.id !== id)
+      setIdeas(filteredIdea)
+    })
+    .catch(error => console.log(error.message))
+  }
+  
+  function addIdea(newIdea) {
+    fetch('http://localhost:3001/api/v1/ideas', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newIdea), 
+    })
+    .then(response => response.json())
+    .then(data => setIdeas([...ideas, data]))
+    .catch(error => console.log(error.message)) 
   }
 
   function getIdeas() {
@@ -27,11 +40,6 @@ function App(){
     .catch(error => console.log(error.message))
   }
 
-  function addIdea() {
-    // take the user input when submit is clicked 
-    // post to the api with the user data
-    // update ideas 
-  }
 
   useEffect(() => {
     getIdeas();
