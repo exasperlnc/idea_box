@@ -27,6 +27,12 @@ function App(){
     .catch(error => console.log(error.message))
   }
 
+  function addIdea() {
+    // take the user input when submit is clicked 
+    // post to the api with the user data
+    // update ideas 
+  }
+
   useEffect(() => {
     getIdeas();
   }, [])
